@@ -6,11 +6,11 @@ Mini player hud for id, money, job and gang
 
 Realtime info with minimal screen realestate.
 - Info Displayed:
- - Server ID
- - Cash (Flashes with money add/remove/set)
- - Bank (Flashes with money add/remove/set)
- - Job Name (Flashes with job change)
- - Gang Name (Flashes with gang change)
+  - Server ID
+  - Cash (Flashes with money add/remove/set)
+  - Bank (Flashes with money add/remove/set)
+  - Job Name (Flashes with job change)
+  - Gang Name (Flashes with gang change)
 
 ## Requirements
 
@@ -42,15 +42,15 @@ All preferences are saved to KVP and loaded on player load.
 exports['sg-minihud']:ToggleHud(bool)
 ```
 - Can be used to toggle the hud on and off if in the way of other UI's.
- - Will check for `display` before enabling/disabling as to not change the user settings.
+  - Will check for `display` before enabling/disabling as to not change the user settings.
 
  ```lua
 exports['sg-minihud']:isHudActive()
 ```
 - Returns the `display` variable to determine if hud is showing for the player.
- - Example: Added to  qb/ps-hud to determine if minihud is showing before updating the money
- ```lua
- RegisterNetEvent('hud:client:OnMoneyChange', function(type, amount, isMinus)
+  - Example: Added to  qb/ps-hud to determine if minihud is showing before updating the money
+```lua
+  RegisterNetEvent('hud:client:OnMoneyChange', function(type, amount, isMinus)
     local hudActive = exports['sg-minihud']:isHudActive()
     if not hudActive then
         cashAmount = PlayerData.money['cash']
@@ -65,7 +65,7 @@ exports['sg-minihud']:isHudActive()
         })
     end
   end)
-  ```
+```
 
 ## Preview
 
