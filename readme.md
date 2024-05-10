@@ -80,9 +80,8 @@ exports['sg-minihud']:isHudActive()
 
 ![minihud example](./assets/minihud_example.png)
 
-![minihud video example](./assets/minihud_preview.mp4)
-
-|| backup link: [Preview Video](https://medal.tv/games/gta-v/clips/2ckHfu9GJsEHNI/d1337bNJlH69?invite=cr-MSxieXgsNDI5MDA5Mzgs) ||
+### Preview: 
+[Preview Video](https://medal.tv/games/gta-v/clips/2ckHfu9GJsEHNI/d1337bNJlH69?invite=cr-MSxieXgsNDI5MDA5Mzgs)
 
 ## Credits
 
