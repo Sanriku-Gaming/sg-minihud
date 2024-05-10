@@ -4,13 +4,14 @@ game 'gta5'
 name 'Mini Hud'
 author 'Nicky - SG Scripts'
 description 'Mini player hud for id, money, job and gang'
-version '1.0.0'
+version '1.1.0'
 lua54 'yes'
 
 shared_scripts {
   "@ox_lib/init.lua",
   'config.lua'
 }
+
 client_scripts {
   'client.lua',
 }

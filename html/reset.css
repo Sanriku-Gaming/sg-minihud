@@ -12,6 +12,7 @@
   --border-color: rgb(199, 199, 199);
 
   --icon-size: 1em;
+  --icon-size2: 0.75em;
   --font-size: 0.8em;
 
   --add-color: rgb(43, 163, 89);
@@ -27,7 +28,7 @@ body {
 }
 
 .huditems {
-  display: flex;
+  display: none;
   position: absolute;
   top: 3.25em;
   right: 1.625em;
@@ -63,7 +64,11 @@ body {
   color: var(--icon-color);
 }
 
-.id, .job, .gang, .cash, .bank {
+.id,
+.job,
+.gang,
+.cash,
+.bank {
   flex: 1;
   text-align: left;
   font-family: 'Kanit', sans-serif;
@@ -76,22 +81,83 @@ body {
 .button-container {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: var(--row-height);
+  margin-top: 0.3em;
 }
 
 .move-button,
-.close-button {
+.close-button,
+.settings-button {
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  margin: 0 0.25em;
-  width: 2.75em;
+  margin: 0 0.2em;
+  padding: 0.1em;
+  width: 1.75em;
   height: var(--row-height);
   background: var(--bg-color);
   border-radius: 0.3125em;
   border-left: 0.25em solid var(--border-color);
   color: var(--icon-color);
-  font-size: var(--icon-size);
+}
+
+.move-button i,
+.close-button i,
+.settings-button i {
+  font-size: var(--icon-size2);
+}
+
+.settings-container {
+  display: none;
+  background-color: var(--bg-color);
+  padding: 10px 20px 10px 10px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-right: 0.25em solid var(--border-color);
+  box-shadow: var(--box-shadow);
+  max-width: fit-content;
+  position: fixed;
+  top: 100px;
+  left: -300px;
+  z-index: 9999;
+}
+
+.settings-container.show {
+  display: block;
+  animation: slideIn 0.3s ease-in-out forwards;
+}
+
+.settings-container.hide {
+  display: block;
+  animation: slideOut 0.3s ease-in-out forwards;
+}
+
+.settings-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: var(--label-color);
+}
+
+.setting-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.setting-item input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.setting-item input[type="checkbox"]:checked {
+  accent-color: var(--icon-color);
+}
+
+.setting-item label {
+  color: var(--label-color);
+  font-size: 12px;
 }
 
 @keyframes flash-add {
@@ -99,18 +165,22 @@ body {
     color: inherit;
     font-weight: normal;
   }
+
   25% {
     color: var(--add-color);
     font-weight: bold;
   }
+
   50% {
     color: inherit;
     font-weight: normal;
   }
+
   75% {
     color: var(--add-color);
     font-weight: bold;
   }
+
   100% {
     color: inherit;
     font-weight: normal;
@@ -122,18 +192,22 @@ body {
     color: inherit;
     font-weight: normal;
   }
+
   25% {
     color: var(--remove-color);
     font-weight: bold;
   }
+
   50% {
     color: inherit;
     font-weight: normal;
   }
+
   75% {
     color: var(--remove-color);
     font-weight: bold;
   }
+
   100% {
     color: inherit;
     font-weight: normal;
@@ -145,18 +219,22 @@ body {
     color: inherit;
     font-weight: normal;
   }
+
   25% {
     color: var(--set-color);
     font-weight: bold;
   }
+
   50% {
     color: inherit;
     font-weight: normal;
   }
+
   75% {
     color: var(--set-color);
     font-weight: bold;
   }
+
   100% {
     color: inherit;
     font-weight: normal;
@@ -168,20 +246,44 @@ body {
     color: inherit;
     font-weight: normal;
   }
+
   25% {
     color: var(--change-color);
     font-weight: bold;
   }
+
   50% {
     color: inherit;
     font-weight: normal;
   }
+
   75% {
     color: var(--change-color);
     font-weight: bold;
   }
+
   100% {
     color: inherit;
     font-weight: normal;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    left: -300px;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    left: 0;
+  }
+
+  100% {
+    left: -300px;
   }
 }
