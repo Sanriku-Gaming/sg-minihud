@@ -1,6 +1,7 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 local PlayerData
 local display = false
+local editing = false
 
 -------------------------
 ---     Functions     ---
@@ -39,6 +40,7 @@ lib.addKeybind({
         status = true
       })
       SetNuiFocus(true, true)
+      editing = true
       QBCore.Functions.Notify('Click and drag the hud to move the hud. (X) or Escape to stop.', 'primary', 10000, 'fas fa-exclamation-circle')
     else
       display = not display
@@ -70,6 +72,7 @@ lib.addKeybind({
 ---   NUI Callbacks   ---
 -------------------------
 RegisterNUICallback('stopMove', function(data, cb)
+  editing = false
   SetNuiFocus(false, false)
   cb({})
 end)
@@ -77,6 +80,20 @@ end)
 RegisterNUICallback('setDisplayState', function(data, cb)
   display = data.displayState
   cb({})
+end)
+
+-------------------------
+---   Threads/Loops   ---
+-------------------------
+CreateThread(function()
+  while true do
+    Wait(2000) -- 2 second loop, adjust as necessary
+    if (GetPauseMenuState() ~= 0 or IsNuiFocused()) and not editing then
+      ToggleHud(false)
+    elseif not editing then
+      ToggleHud(true)
+    end
+  end
 end)
 
 -------------------------
